@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Systems EC | Soluciones Tecnológicas & Médicas en Ecuador</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            darkest: '#340810',
+                            burgundy: '#6E0F1D',
+                            crimson: '#8B1527',
+                            primary: '#A81329',
+                            vibrant: '#EE2A43',
+                            accent: '#FF415B',
+                            lightBg: '#FDF7F8',
+                            surface: '#FAFAFA'
+                        },
+                        dicom: {
+                            blue: '#4353ff',
+                            teal: '#45ddb8',
+                            cyan: '#5eb9ca',
+                            light: '#5c7eff',
+                            coral: '#ff6d65'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="font-sans bg-brand-lightBg text-gray-800 antialiased selection:bg-brand-vibrant selection:text-white" id="inicio">
+
+    <!-- TOP NOTIFICATION BANNER -->
+    <div class="bg-brand-darkest text-white text-xs py-2.5 px-4 border-b border-brand-crimson/40 hidden md:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-dicom-teal"></i> Cumplimiento con la Ley LOPDP de Ecuador</span>
+                <span class="text-white/30">|</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-headset text-brand-accent"></i> Soporte Especializado para Centros Radiológicos</span>
+            </div>
+            <div class="flex items-center space-x-5">
+                <a href="tel:0997213186" class="hover:text-brand-accent transition"><i class="fa-solid fa-phone mr-1.5"></i> 099 721 3186</a>
+                <a href="mailto:astronomicadesign@gmail.com" class="hover:text-brand-accent transition"><i class="fa-solid fa-envelope mr-1.5"></i> astronomicadesign@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-red-100 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- LOGO WITH ASYNC SVG (NO TEXT, ORIGINAL COLORS) -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="h-12 w-auto flex items-center justify-center transform group-hover:scale-105 transition-all">
+                        <img src="assets/images/logo_async.svg" alt="Async Systems Logo" class="h-10 w-auto object-contain">
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION -->
+                <div class="hidden lg:flex items-center space-x-7 font-medium text-sm text-gray-700">
+                    <a href="#inicio" class="hover:text-brand-vibrant transition py-2 border-b-2 border-transparent hover:border-brand-vibrant">Inicio</a>
+                    <a href="#soluciones" class="hover:text-brand-vibrant transition py-2 border-b-2 border-transparent hover:border-brand-vibrant">Soluciones Médicas</a>
+                    <a href="#productos" class="hover:text-brand-vibrant transition py-2 border-b-2 border-transparent hover:border-brand-vibrant font-semibold text-brand-primary">dicomfix™ & SIGP</a>
+                    <a href="#seguridad" class="hover:text-brand-vibrant transition py-2 border-b-2 border-transparent hover:border-brand-vibrant">Seguridad LOPDP</a>
+                    <a href="#calculadora" class="hover:text-brand-vibrant transition py-2 border-b-2 border-transparent hover:border-brand-vibrant">Cotizador Rápido</a>
+                    <a href="#contacto" class="hover:text-brand-vibrant transition py-2 border-b-2 border-transparent hover:border-brand-vibrant">Contacto</a>
+                </div>
+
+                <!-- CTA BUTTON -->
+                <div class="hidden sm:flex items-center space-x-3">
+                    <a href="https://wa.me/593997213186?text=Hola%20Async%20Systems%20EC,%20deseo%20asesoría%20para%20mi%20centro%20médico"
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs text-white bg-brand-primary hover:bg-brand-burgundy shadow-sm transition-all">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>Asesoría por WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <button id="mobile-toggle-btn" class="lg:hidden text-gray-700 hover:text-brand-primary text-2xl focus:outline-none p-2">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#inicio" class="block py-2 text-gray-700 hover:text-brand-vibrant font-medium">Inicio</a>
+            <a href="#soluciones" class="block py-2 text-gray-700 hover:text-brand-vibrant font-medium">Soluciones Médicas</a>
+            <a href="#productos" class="block py-2 text-brand-primary font-bold">dicomfix™ & SIGP</a>
+            <a href="#seguridad" class="block py-2 text-gray-700 hover:text-brand-vibrant font-medium">Seguridad LOPDP</a>
+            <a href="#calculadora" class="block py-2 text-gray-700 hover:text-brand-vibrant font-medium">Cotizador Rápido</a>
+            <a href="#contacto" class="block py-2 text-gray-700 hover:text-brand-vibrant font-medium">Contacto</a>
+            <div class="pt-2">
+                <a href="https://wa.me/593997213186?text=Hola%20Async%20Systems%20EC,%20deseo%20asesoría"
+                   target="_blank"
+                   class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm text-white bg-brand-primary shadow-sm">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- HERO TEXT -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-semibold border border-brand-primary/20">
+                        <i class="fa-solid fa-hospital text-brand-vibrant"></i>
+                        Tecnología Radiológica Confiable para Ecuador
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-gray-900 tracking-tight leading-tight">
+                        La evolución digital para su <span class="text-brand-primary">Centro Médico o Clínica</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Simplifique la gestión de sus pacientes, controle estudios de Rayos X, Ecografía, Tomografía y Resonancia Magnética sin enredos, y mantenga su administración al día con facturación automática y total respaldo legal.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#calculadora" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white bg-brand-primary hover:bg-brand-burgundy shadow-sm transition-all">
+                            <span>Calcular Plan a su Medida</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#productos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 transition-all">
+                            <i class="fa-solid fa-desktop text-brand-primary"></i>
+                            <span>Ver Interfaces Reales</span>
+                        </a>
+                    </div>
+                    <!-- TRUST BADGES -->
+                    <div class="pt-6 border-t border-gray-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-gray-500 font-medium">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Cero papeleo molesto</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Facturación automática</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Respaldo LOPDP 100% seguro</span>
+                    </div>
+                </div>
+
+                <!-- HERO VISUAL PREVIEW -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="preview-mockup bg-white p-2 shadow-xl rounded-2xl border border-gray-200">
+                            <img src="assets/images/SIGP_DASHBOARD.png" alt="SIGP Dashboard Panel Principal" class="w-full h-auto rounded-xl">
+                        </div>
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 hidden sm:flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400 font-semibold">Sistema Activo</div>
+                                <div class="text-sm font-bold text-gray-800">Control Total sin Errores</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BENEFICIOS CLAVE -->
+    <section class="py-20 bg-brand-lightBg" id="soluciones">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-primary px-3 py-1 rounded bg-brand-primary/10">Beneficios Reales</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-black text-gray-900">Diseñado para hacerle la vida más fácil al personal médico y administrativo</h2>
+                <p class="text-gray-600 text-base">Olvídese de los sistemas lentos y complicados. Nuestras soluciones están hechas para que cualquier colaborador las domine en minutos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-red-100 card-hover-effect">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-primary text-white flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Ahorro de Tiempo y Orden</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Agilice la atención de sus pacientes desde que llegan a recepción hasta la entrega de sus resultados médicos, eliminando filas y esperas innecesarias.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-red-100 card-hover-effect">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-vibrant text-white flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Facturación y Cobros Simples</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Facturación electrónica automática, control de cobros y caja diaria sin complicaciones. Todo en orden y listo para sus reportes contables.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-red-100 card-hover-effect">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-darkest text-white flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Tranquilidad y Respaldo LOPDP</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Cumplimiento estricto con la Ley Orgánica de Protección de Datos Personales (LOPDP). Sus pacientes y su clínica protegidos con altos estándares de seguridad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS ESTRELLAS: dicomfix & SIGP -->
+    <section class="py-16 bg-white" id="productos">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-primary px-3 py-1 rounded bg-brand-primary/10">Tecnología Especializada</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-black text-gray-900">Nuestras Soluciones Estrella en Acción</h2>
+                <p class="text-gray-600 text-base">Conozca las interfaces reales de nuestros sistemas desarrollados para la gestión clínica y radiológica.</p>
+            </div>
+
+            <!-- PRODUCT SWITCHER TABS -->
+            <div class="flex flex-col sm:flex-row justify-center max-w-md mx-auto mb-10 bg-gray-100 p-1.5 rounded-2xl gap-2 border border-gray-200">
+                <button id="tab-dicomfix" class="flex-1 py-2.5 px-6 text-center font-bold text-sm rounded-xl transition-all bg-[var(--dicom-blue)] text-white shadow-sm">
+                    <i class="fa-solid fa-x-ray mr-2"></i> dicomfix™ (RIS/PACS)
+                </button>
+                <button id="tab-sigp" class="flex-1 py-2.5 px-6 text-center font-medium text-sm rounded-xl transition-all text-gray-600 hover:text-gray-900 bg-transparent">
+                    <i class="fa-solid fa-chart-pie mr-2"></i> SIGP (Gestión Clínica)
+                </button>
+            </div>
+
+            <!-- TAB CONTENT: dicomfix -->
+            <div id="content-dicomfix" class="space-y-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-brand-lightBg p-6 sm:p-8 rounded-2xl border border-blue-100 shadow-sm">
+                    <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <!-- LOGO DICOMFIX -->
+                            <div class="inline-flex items-center">
+                                <img src="assets/images/LOGO DICOMFIX-01.svg" alt="dicomfix Logo" class="h-20 w-auto object-contain">
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-heading font-black text-gray-900 leading-snug">Sus estudios médicos ordenados y al alcance de un clic</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                                Permite recibir las imágenes de sus equipos de Rayos X, Ecografía, Tomografía y Resonancia Magnética directamente al sistema. Los médicos especialistas pueden visualizarlas en 3D con máxima nitidez y compartirlas de forma segura.
+                            </p>
+                            <ul class="space-y-2 text-xs sm:text-sm text-gray-700 font-medium">
+                                <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-[var(--dicom-teal)]"></i> Compatible con cualquier equipo médico DICOM 3.0</li>
+                                <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-[var(--dicom-teal)]"></i> Visor rápido sin instalaciones pesadas</li>
+                                <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-[var(--dicom-teal)]"></i> Historial clínico por paciente disponible</li>
+                            </ul>
+                            <div class="pt-1">
+                                <a href="https://wa.me/593997213186?text=Hola,%20deseo%20una%20demostración%20en%20vivo%20de%20dicomfix"
+                                   target="_blank"
+                                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-[var(--dicom-blue)] hover:bg-blue-700 shadow-sm transition-all">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> Solicitar Demo de dicomfix™
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- COPYRIGHT DISCLAIMER INFERIOR -->
+                        <div class="pt-3 border-t border-gray-200 text-[10px] text-gray-400 font-medium tracking-tight">
+                            dicomfix™ Copyright © 2013-2026 DicomSmart Medical Systems, inc.
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7">
+                        <div class="preview-mockup bg-gray-900 p-1.5 rounded-xl shadow-md border border-blue-500/30">
+                            <img src="assets/images/VISOR3D_DICOMFIX.png" alt="Visor 3D dicomfix en acción" class="w-full h-auto rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT: SIGP -->
+            <div id="content-sigp" class="space-y-8 hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-brand-lightBg p-6 sm:p-8 rounded-2xl border border-red-100 shadow-sm">
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold border border-brand-primary/20">
+                            <i class="fa-solid fa-stethoscope"></i> SIGP: Administración y Caja
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-heading font-black text-gray-900 leading-snug">SIGP: Control administrativo y facturación sin enredos</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                            Diseñado específicamente para el día a día de su centro médico. Lleve el registro exacto de caja diaria, cobros, turnos de pacientes y facturación electrónica automática en segundos.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                            <div class="bg-white p-3 rounded-xl border border-red-100 shadow-sm">
+                                <div class="text-brand-primary font-bold text-sm mb-0.5"><i class="fa-solid fa-receipt mr-1.5"></i> Facturación</div>
+                                <p class="text-[11px] text-gray-600">Emisión automática y control de cobros.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-red-100 shadow-sm">
+                                <div class="text-brand-primary font-bold text-sm mb-0.5"><i class="fa-solid fa-users-rectangle mr-1.5"></i> Historial</div>
+                                <p class="text-[11px] text-gray-600">Acceso ordenado a consultas y pagos.</p>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <a href="https://wa.me/593997213186?text=Hola,%20deseo%20más%20información%20sobre%20SIGP%20y%20facturación"
+                               target="_blank"
+                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-brand-primary hover:bg-brand-burgundy shadow-sm transition-all">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Solicitar Demo de SIGP
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 space-y-3">
+                        <div class="preview-mockup bg-white p-1.5 rounded-xl shadow-md border border-gray-200">
+                            <img src="assets/images/HISTORIAL_SIGP.png" alt="Historial SIGP" class="w-full h-auto rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEGURIDAD Y LOPDP -->
+    <section class="py-20 bg-brand-darkest text-white relative overflow-hidden" id="seguridad">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-semibold border border-emerald-500/30">
+                        <i class="fa-solid fa-shield-halved"></i> Privacidad y Cumplimiento Legal
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-black tracking-tight">
+                        Protección total de datos bajo la <span class="text-emerald-400">Ley LOPDP de Ecuador</span>
+                    </h2>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        La información médica de sus pacientes es sagrada y confidencial. Nuestras plataformas cumplen rigurosamente con los estándares de encriptación y privacidad exigidos por la ley ecuatoriana, brindándole total tranquilidad legal y operativa.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i class="fa-solid fa-lock text-emerald-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Encriptación Avanzada</h4>
+                                <p class="text-xs text-gray-400 mt-1">Datos seguros en tránsito y almacenamiento local o en nube.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i class="fa-solid fa-user-shield text-emerald-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Acceso Restringido</h4>
+                                <p class="text-xs text-gray-400 mt-1">Permisos por roles para médicos, recepcionistas y administradores.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="bg-brand-burgundy p-8 rounded-3xl border border-white/15 shadow-xl text-center space-y-6 max-w-md w-full">
+                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto text-3xl text-emerald-400">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-heading">Seguridad Certificada para Centros Médicos</h3>
+                        <p class="text-xs text-gray-200">Evite riesgos legales y multas. Confíe en expertos con años de trayectoria implementando redes y software en Ecuador.</p>
+                        <a href="https://wa.me/593997213186?text=Hola,%20deseo%20asesoría%20sobre%20seguridad%20LOPDP%20para%20mi%20centro%20médico"
+                           target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-xs text-gray-900 bg-white hover:bg-gray-100 shadow-sm transition-all">
+                            <i class="fa-brands fa-whatsapp text-emerald-600"></i> Consultar con un Especialista
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA CLÍNICA SIMPLIFICADA -->
+    <section class="py-20 bg-brand-lightBg" id="calculadora">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-primary px-3 py-1 rounded bg-brand-primary/10">Calculadora Rápida</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-black text-gray-900">Descubra el plan ideal para su centro médico en segundos</h2>
+                <p class="text-gray-600 text-base">Ingrese 3 datos sencillos y obtenga la recomendación exacta para su centro.</p>
+            </div>
+
+            <div class="bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-red-100 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- FORM INPUTS -->
+                <div class="lg:col-span-6 space-y-6" id="clinical-calculator-form">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                            1. Cantidad promedio de pacientes diarios
+                        </label>
+                        <input type="number" id="calc-patients" min="5" max="1000" value="50"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-sm font-semibold">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                            2. Cantidad de modalidades / equipos médicos (Rayos X, Ecografía, etc.)
+                        </label>
+                        <input type="number" id="calc-modalities" min="1" max="20" value="2"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-sm font-semibold">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                            3. Cantidad de sucursales o sedes
+                        </label>
+                        <input type="number" id="calc-branches" min="1" max="10" value="1"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-sm font-semibold">
+                    </div>
+                </div>
+
+                <!-- RESULT CARD -->
+                <div class="lg:col-span-6 bg-brand-darkest p-8 rounded-2xl text-white space-y-6 shadow-lg flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/10 text-emerald-400 text-xs font-bold">
+                            <i class="fa-solid fa-sparkles"></i> Configuración Recomendada
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-heading font-black text-white" id="result-plan-name">
+                            Plan Clínico Profesional
+                        </h3>
+                        <p class="text-xs text-gray-300 font-medium" id="result-capacity">
+                            Hasta 5 Modalidades Médicas • Almacenamiento Seguro LOPDP
+                        </p>
+                        <p class="text-xs text-gray-200 leading-relaxed" id="result-description">
+                            Ideal para centros de diagnóstico radiológico activos. Conexión DICOM 3.0 directa con equipos, visor web 3D rápido y facturación automática integrada.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/15">
+                        <a href="#" id="calc-whatsapp-btn" target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-500 shadow-sm transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Solicitar Cotización Formal por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-16 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                <!-- Col 1: Brand (LOGO ASYNC BLANCO EN EL FOOTER) -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 w-auto flex items-center justify-center">
+                            <img src="assets/images/logo_async.svg" alt="Async Systems Logo" class="h-9 w-auto object-contain filter brightness-0 invert">
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Soluciones tecnológicas integrales, infraestructura DICOM 3.0 y redes clínicas para el Ecuador.
+                    </p>
+                </div>
+
+                <!-- Col 2: Links -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-heading font-bold text-sm uppercase tracking-wider">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+                        <li><a href="#soluciones" class="hover:text-white transition">Soluciones Médicas</a></li>
+                        <li><a href="#productos" class="hover:text-white transition">dicomfix™ & SIGP</a></li>
+                        <li><a href="#seguridad" class="hover:text-white transition">Seguridad LOPDP</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact -->
+                <div class="space-y-3" id="contacto">
+                    <h4 class="text-white font-heading font-bold text-sm uppercase tracking-wider">Contacto Directo</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-brand-vibrant"></i> <a href="tel:0997213186" class="hover:text-white">099 721 3186</a></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-vibrant"></i> <a href="mailto:astronomicadesign@gmail.com" class="hover:text-white">astronomicadesign@gmail.com</a></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-vibrant"></i> Ecuador</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: WhatsApp Badge -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-heading font-bold text-sm uppercase tracking-wider">Atención Inmediata</h4>
+                    <p class="text-xs text-gray-400">¿Duda técnica o cotización personalizada? Escríbanos directamente.</p>
+                    <a href="https://wa.me/593997213186?text=Hola%20Async%20Systems%20EC,%20deseo%20información"
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-500 transition-all shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Abrir Chat de WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2026 Async Systems EC. Todos los derechos reservados.</p>
+                <p class="mt-2 sm:mt-0 flex items-center gap-1">
+                    <span>Desarrollado para profesionales de la salud en Ecuador</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EXTERNAL JAVASCRIPT -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
